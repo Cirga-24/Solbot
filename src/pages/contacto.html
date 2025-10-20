@@ -1,0 +1,144 @@
+<!Doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contacto — SolBot</title>
+  <link rel="stylesheet" href="../styles/contacto.css"> </link>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../../index.html#inicio">Inicio</a></li>
+                <li><a href="../../index.html#team">Nosotros</a></li>
+                <li><a href="../../index.html#dispositivos">Dispositivos</a></li>
+                <li><a href="simulacion.html">Simulacion</a></li>
+            </ul>
+        </nav>
+        <img src="../images/SenaImg.png" alt="LogoSenaNaranja" class="logoSena" width="50" height="50"
+        style="margin-left: 70%;">
+    </header>
+
+
+  <main class="container" role="main">
+    <section class="hero" aria-labelledby="contact-title">
+      <h1 id="contact-title">¿Hablamos? — Contáctanos</h1>
+      <p class="lead">¿Tienes una duda, una idea o quieres colaborar con SolBot? Rellena el formulario y te responderemos en menos de 48 horas.</p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div>
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+        </div>
+
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@ejemplo.com" required>
+        </div>
+
+        <div>
+          <label for="phone">Teléfono (opcional)</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+34 600 000 000">
+        </div>
+
+        <div>
+          <label for="subject">Asunto</label>
+          <select id="subject" name="subject" aria-label="Asunto">
+            <option value="general">Consulta general</option>
+            <option value="soporte">Soporte técnico</option>
+            <option value="colaboracion">Colaboración</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" placeholder="Escribe tu mensaje..." required></textarea>
+        </div>
+
+        <div class="full actions">
+          <div style="flex:1; align-self:center">
+            <label style="font-size:12px;color:var(--muted);">Al enviar aceptas que usemos tus datos para responder</label>
+          </div>
+          <button id="sendBtn" class="btn" type="submit">Enviar mensaje</button>
+        </div>
+
+        <div class="full">
+          <div id="success" class="success" role="status" aria-live="polite">
+            ¡Mensaje enviado! Te contestaremos pronto. (Esta demo no envía correos reales.)
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <aside class="aside" aria-labelledby="info-title">
+      <div class="card-row">
+        <div class="icon">SB</div>
+        <div class="contact-info">
+          <h3 id="info-title">SolBot</h3>
+          <p>Soporte y consultas — Lunes a Viernes, 9:00–18:00</p>
+        </div>
+      </div>
+
+      <div style="margin-top:8px">
+        <p style="margin:0 0 6px 0; color:var(--muted); font-size:13px"><strong>Email</strong></p>
+        <p style="margin:0 0 12px 0"><a href="mailto:Soporte@solbot.com.co" style="color:var(--accent); text-decoration:none">Soporte@solbot.com.co</a></p>
+
+        <p style="margin:0 0 6px 0; color:var(--muted); font-size:13px"><strong>Teléfono</strong></p>
+        <p style="margin:0 0 12px 0">+57 312 4567890</p>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.02); padding-top:12px; margin-top:12px">
+        <p style="margin:0 0 8px 0; color:var(--muted); font-size:13px"><strong>Síguenos</strong></p>
+        <div class="socials" aria-hidden="false">
+          <a href="#" title="Twitter">T</a>
+          <a href="#" title="GitHub">GH</a>
+          <a href="#" title="LinkedIn">in</a>
+        </div>
+        <p class="note">Si necesitas una integración o servicio personalizado, indica los detalles en el mensaje.</p>
+      </div>
+    </aside>
+
+    <footer>
+        <p style="color: white;">&copy; 2024 SolBot. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('success');
+      const sendBtn = document.getElementById('sendBtn');
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        sendBtn.disabled = true;
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if(!name || !email || !message || !validateEmail(email)){
+          alert('Por favor, completa los campos obligatorios y verifica el correo.');
+          sendBtn.disabled = false;
+          return;
+        }
+
+        // Demo: Simula envío y muestra confirmación.
+        setTimeout(() => {
+          success.style.display = 'block';
+          form.reset();
+          sendBtn.disabled = false;
+          // Opcional: esconder el mensaje después de unos segundos
+          setTimeout(()=> success.style.display = 'none', 7000);
+        }, 800);
+      });
+    })();
+  </script>
+</body>
+</html>

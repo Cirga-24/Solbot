@@ -70,6 +70,8 @@ h4 {
 }
 
 .teamNames {
+    justify-self: center;
+    text-align: center;
     color: #295483;
 }
 

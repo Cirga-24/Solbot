@@ -24,11 +24,10 @@
     }
 
     // attach events
-    if(next) next.addEventListener('click', () => { nextSlide(); resetAuto(); });
-    if(prev) prev.addEventListener('click', () => { prevSlide(); resetAuto(); });
+    if(next) next.addEventListener('click', () => { nextSlide(); });
+    if(prev) prev.addEventListener('click', () => { prevSlide(); });
     dots.forEach(d => d.addEventListener('click', e => { goTo(parseInt(e.currentTarget.dataset.slide,10)); resetAuto(); }));
 
     // init
     goTo(0);
-    startAuto();
 })();
